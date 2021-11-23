@@ -12,9 +12,12 @@ def midl_time(count):
             for i in range(count):
                 start = time.time()
                 result = func(*args)
-                time.sleep(3)
+                time.sleep(1)
                 end = time.time()
                 res.append(end - start)
+            f = open(f'{func.__name__}.txt', 'w')
+            f.write(f'result- {result}\nMidl Time- {sum(res) / len(res)}')
+            f.close()
             return f'result- {result}\nMidl Time- {sum(res) / len(res)}'
 
         return wrapped
